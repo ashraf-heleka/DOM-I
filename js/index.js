@@ -37,90 +37,77 @@ const siteContent = {
   },
 };
 
-// Header
-const logo = document.getElementById("logo-img");
+// NAV
+let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('alt', "Great Idea! Company logo.")
+logo.className = "logo";
 
-let navItems = document.querySelectorAll("a");
-navItems[0].textContent = siteContent["nav"]["nav-item-1"];
-navItems[1].textContent = siteContent["nav"]["nav-item-2"];
-navItems[2].textContent = siteContent["nav"]["nav-item-3"];
-navItems[3].textContent = siteContent["nav"]["nav-item-4"];
-navItems[4].textContent = siteContent["nav"]["nav-item-5"];
-navItems[5].textContent = siteContent["nav"]["nav-item-6"];
+let navLinks = document.querySelectorAll("a");
 
+for(let i = 0; i<navLinks.length; i++){
+   navLinks[i].textContent=siteContent.nav[`nav-item-${i + 1}`]
+};
 
-// CTA section
+navLinks.forEach(element => element.style.color = "green");
 
-let ctaImg = document.getElementById("cta-img");
-ctaImg.setAttribute('src', siteContent["cta"]["img-src"])
-
-let ctaHead = document.querySelector("h1");
-ctaHead.textContent = siteContent["cta"]["h1"];
+// CTA
+let ctaHOne = document.querySelector("h1");
+ctaHOne.textContent = siteContent.cta.h1;  
 
 let ctaButton = document.querySelector("button");
-ctaButton.textContent = siteContent["cta"]["button"];
+ctaButton.textContent = siteContent.cta.button;  
+
+let ctaImg = document.querySelector('#cta-img')
+ctaImg.setAttribute('src', siteContent.cta["img-src"])
 
 // Main content
 let mainContent = document.querySelectorAll("h4");
-mainContent[0].textContent = siteContent["main-content"]["features-h4"]
-mainContent[1].textContent = siteContent["main-content"]["about-h4"]
-mainContent[2].textContent = siteContent["main-content"]["services-h4"]
-mainContent[3].textContent = siteContent["main-content"]["product-h4"]
-mainContent[4].textContent = siteContent["main-content"]["vision-h4"]
+mainContent[0].textContent = siteContent["main-content"]["features-h4"];
+mainContent[1].textContent = siteContent["main-content"]["about-h4"];
+mainContent[2].textContent = siteContent["main-content"]["services-h4"];
+mainContent[3].textContent = siteContent["main-content"]["product-h4"];
+mainContent[4].textContent = siteContent["main-content"]["vision-h4"];
 
-let mainContentP = document.querySelectorAll(".top-content p");
-mainContentP[0].textContent = siteContent["main-content"]["features-content"]
-mainContentP[1].textContent = siteContent["main-content"]["about-content"]
+let mainContentText = document.querySelectorAll('.text-content p');
+mainContentText[0].textContent = siteContent["main-content"]["features-content"];
+mainContentText[1].textContent = siteContent["main-content"]["about-content"];
+mainContentText[2].textContent = siteContent["main-content"]["services-content"];
+mainContentText[3].textContent = siteContent["main-content"]["product-content"];
+mainContentText[4].textContent = siteContent["main-content"]["vision-content"];
 
-let middleImg = document.getElementById("middle-img");
-middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"])
-
-let mainContentPS = document.querySelectorAll(".bottom-content p");
-mainContentPS[0].textContent = siteContent["main-content"]["services-content"]
-mainContentPS[1].textContent = siteContent["main-content"]["product-content"]
-mainContentPS[2].textContent = siteContent["main-content"]["vision-content"]
-
+let middleImg = document.querySelector('#middle-img')
+middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
 // Contact
-let contactHeader = document.querySelectorAll(".contact h4");
-contactHeader[0].textContent = siteContent["contact"]["contact-h4"]
+let contactHFour = document.querySelector('.contact h4');
+contactHFour.textContent = siteContent["contact"]["contact-h4"];
 
-let contactPara = document.querySelectorAll(".contact p");
-contactPara[0].textContent = siteContent["contact"]["address"]
-contactPara[1].textContent = siteContent["contact"]["phone"]
-contactPara[2].textContent = siteContent["contact"]["email"]
+let contactP = document.querySelectorAll(".contact p");
+contactP[0].textContent = siteContent["contact"]["address"];
+contactP[1].textContent = siteContent["contact"]["phone"];
+contactP[2].textContent = siteContent["contact"]["email"];
 
 // Footer
-let footerContent = document.querySelectorAll("footer p");
-footerContent[0].textContent = siteContent["footer"]["copyright"]
+let footer = document.querySelector("footer p");
+footer.textContent = siteContent.footer.copyright;
 
+// for(let i = 1; i < contactP.length; i++){
+//   contactP[i].textContent=siteContent.contact[i+1]
+// };
 
+//  Utilize .appendChild() and .prepend() to add two new items to the navigation system. You can call them whatever you want.
 
-// Adding items to nav
-// let newListItem = document.createElement('a');
-// newListItem.textContent = 'Other page';
-// navItems.prepend(newListItem);
+// Adding more to Nav
 
-// let para = document.createElement("A");
-// let t = document.createTextNode("Other");
-// para.appendChild(t);
-// document.getElementsByTagName("nav").appendChild(para);
-
-const newListItem = document.createElement('a');
-newListItem.textContent = "Other"
+let navHome = document.createElement("a");
+navHome.textContent = "Home"
 const parentElement = document.querySelector('nav');
-parentElement.append(newListItem) 
+parentElement.prepend(navHome);
 
-const newListItemTwo = document.createElement('a');
-newListItemTwo.textContent = "Home"
-parentElement.prepend(newListItemTwo) 
+let navOther = document.createElement("a");
+navOther.textContent = "Other"
+parentElement.appendChild(navOther)
 
-// Styling nav
-navItems.forEach( element => {
-  element.style.color = "green"
-})
-
-newListItem.setAttribute("style", "color: green;");
-
-newListItemTwo.setAttribute("style", "color: green;");
+navHome.style.color = "green";
+navOther.style.color = "green";
